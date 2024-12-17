@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="/todoapp/index.html">
+</head>
+<body>
+  <video autoplay muted loop id="myVideo">
+    <source src="../videos/Shapes Background Videos- Download 12,011+ Free 4K & HD Stock Footage Clips.mp4" type="video/mp4">
+</video>
+  <div class="login-container">
+    <h2 href="/Dashboard/dashboard.html">Login</h2>
+    <form action="#" method="POST">
+      <div class="input-group">
+        <label for="username">Email</label>
+        <input type="email" id="email" name="username" placeholder="Email" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+      </div>
+      <button type="submit" class="login-btn" onclick="login(event)">Login</button>
+      <div class="signup-link">
+        <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+      </div>
+    </form>
+  </div>
+
+
+  <script src="auth.js" ></script>
+</body>
+</html>

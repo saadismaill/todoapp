@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive To-do List</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <video autoplay muted loop id="myVideo">
+        <source src="../videos/Shapes Background Videos- Download 12,011+ Free 4K & HD Stock Footage Clips.mp4" type="video/mp4">
+    </video>
+<header  class="flex justify-end mx-4">
+    <h1 id="userName" >Users</h1>
+    <button onclick="logout()" class="bg-purple-800 p-4 flex justify-end items-end text-end rounded-2xl hover:bg-purple-200 hover:text-purple-600">logout</button>
+</header>
+    
+    <div class="container max-w-full">
+        <h1>To-do List</h1>
+        <div class="todo-app">
+            <div class="input-container">
+                <input class="text-black" type="text" id="input-box" placeholder="Add Task" onkeypress="handleEnter(event)">
+                <button id="add-btn" onclick="add()">Add</button>
+            </div>
+            <ul id="ul" class="list-container">
+                <!-- Dynamic list items will be inserted here -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="app.js"></script>
+</body>
+</html>
