@@ -1,9 +1,6 @@
-
-
-
-
 let userData = JSON.parse(localStorage.getItem('userData')) || [];
 
+// Login Function
 function login(event) {
     event.preventDefault();
 
@@ -11,31 +8,37 @@ function login(event) {
     let pass = document.getElementById("password");  
 
     if (!email.value || !pass.value) {  
-        alert("Please fill in all fields");
+        Swal.fire({
+            icon: "warning",
+            title: "Oops...",
+            text: "Please fill in all fields!",
+        });
         return;
     }
-    localStorage.setItem("currentlogin", JSON.stringify(userData))
 
     let user = userData.find(function(user){
-     return user.email === email.value && user.password === pass.value;
-        
-    }) 
+        return user.email === email.value && user.password === pass.value;
+    }); 
 
     if(user){
-        alert("Login successful!");
-        window.location = "../tododashboard/index.html"
-
-    } 
-    
-    else {
-        alert("Invalid email or password");
+        Swal.fire({
+            icon: "success",
+            title: "Login Successful!",
+            text: "Welcome back, " + user.name,
+            confirmButtonText: "Go to Dashboard"
+        }).then(() => {
+            window.location = "../tododashboard/index.html";
+        });
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "Login Failed!",
+            text: "Invalid email or password. Please try again."
+        });
     }
+}
 
-
-    
-}     
-
-
+// Signup Function
 function signup(event) {
     event.preventDefault();
 
@@ -43,21 +46,29 @@ function signup(event) {
     let pass = document.getElementById("passfield");  
     let name = document.getElementById("name");
 
-    if (!email.value || !pass.value ||!name.value) {  
-        alert("Please fill in all fields");
+    if (!email.value || !pass.value || !name.value) {  
+        Swal.fire({
+            icon: "warning",
+            title: "Oops...",
+            text: "Please fill in all fields!",
+        });
         return;
     }
 
     let existingUser = userData.find(function(user){
         return user.email === email.value;
+    });
 
-    })
-
-    let userId =  userData.length > 0 ? userData[userData.length - 1].userId +1 : 1000
     if(existingUser){
-        alert("Email already exists. Please use a different one");
+        Swal.fire({
+            icon: "error",
+            title: "Email Already Exists!",
+            text: "Please use a different email address."
+        });
         return;
     }
+
+    let userId = userData.length > 0 ? userData[userData.length - 1].userId + 1 : 1000;
 
     let newUser = {
         name: name.value,
@@ -68,12 +79,13 @@ function signup(event) {
 
     userData.push(newUser);
     localStorage.setItem('userData', JSON.stringify(userData));
-    email.value = "";
 
-    alert("Registration successful!");
-    window.location = "./login.html";
-    
-
+    Swal.fire({
+        icon: "success",
+        title: "Registration Successful!",
+        text: "You can now log in with your credentials.",
+        confirmButtonText: "Go to Login"
+    }).then(() => {
+        window.location = "./login.html";
+    });
 }
-
-
